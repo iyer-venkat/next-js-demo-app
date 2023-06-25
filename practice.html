@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            border: 2px solid red;
+            margin: 0px auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        #box::before {
+            content: 'I am before';
+            background: red;
+            color: #fff;
+            width: auto;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            top: 250px;
+            transform: translateY(-50%);
+            font-size: var(--boxAfterFontSize, 20px);
+        }
+
+        #box::after {
+            content: 'I am after';
+            background: green;
+            color: #fff;
+            width: auto;
+            position: absolute;
+            margin: auto;
+            right: 0;
+            top: 250px;
+            transform: translateY(-50%);
+            font-size: var(--boxAfterFontSize, 20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column;">
+        <div id="box"></div>
+        <div style="margin: 10px auto">
+            <button id="blowUp">Increase Font!</button>
+        </div>
+    </div>
+    <div style="border: 1px solid">I am a Block!</div>
+    <div style="border: 1px solid; display: inline; margin: 10px">I am Inline!</div>
+    <div style="border:1px solid; margin: 10px; display: inline-block">I am Inline-block!</div>
+</body>
+
+<script>
+    document.getElementById("blowUp").addEventListener("click", blowAfter)
+
+    let fontSize = 20;
+    function blowAfter(e) {
+        const box = document.getElementById("box")
+        console.log(box)
+
+        const boxAfter = window.getComputedStyle(box, "::after")
+        console.log(boxAfter.backgroundColor)
+
+        fontSize = (fontSize >= 50) ? 20 : fontSize += 5;
+        box.style.setProperty("--boxAfterFontSize", `${fontSize}px`)
+    }
+</script>
+
+</html>
