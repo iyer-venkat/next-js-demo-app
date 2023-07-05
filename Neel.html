@@ -18,6 +18,7 @@
     count = a.reduce((acc, e) => ((acc[e] = !acc[e] ? 1 : ++acc[e]), acc), {});
     console.log(count, Object.entries(count));
 
+    // find a string in another (advanced)
     const phrase = "Neel is a bad~!9 boy";
     const search = "ad~!boy";
     let start = phrase.replace(/[^a-z]/gi, "").indexOf(search.replace(/[^a-z]/gi, ""));

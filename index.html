@@ -10,11 +10,13 @@
 
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="/app/page.tsx"></script>
 
   <button onClick="getActivePlan()">Fetch</button>
 </body>
 <script>
+  // sample code to cancel previous API call if it is in progress &
+  // a new call come in
   const loaderText = [
     "Loading",
     "Loading.",

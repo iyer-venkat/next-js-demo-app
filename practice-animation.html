@@ -2,58 +2,195 @@
 
 <head>
   <style>
+    :root {
+      --degree: 160deg;
+      --card-width: 350px;
+    }
+
     @keyframes spin {
       0% {
-        --rotate: 0deg;
-        /* transform: rotate(var(--rotate)); */
+        --degree: 1deg;
+      }
+
+      5% {
+        --degree: 18deg;
+      }
+
+      10% {
+        --degree: 36deg;
+      }
+
+      15% {
+        --degree: 54deg;
+      }
+
+      20% {
+        --degree: 72deg;
+      }
+
+      30% {
+        --degree: 108deg;
+      }
+
+      40% {
+        --degree: 144deg;
+      }
+
+      50% {
+        --degree: 180deg;
+      }
+
+      60% {
+        --degree: 216deg;
+      }
+
+      70% {
+        --degree: 252deg;
+      }
+
+      80% {
+        --degree: 288deg;
+      }
+
+      90% {
+        --degree: 324deg;
       }
 
       100% {
-        --rotate: 360deg;
-        /* transform: rotate(var(--rotate)); */
+        --degree: 360deg;
       }
     }
 
     @-moz-keyframes spin {
       0% {
-        --rotate: 0deg;
+        --degree: 1deg;
+      }
+
+      5% {
+        --degree: 18deg;
+      }
+
+      10% {
+        --degree: 36deg;
+      }
+
+      15% {
+        --degree: 54deg;
+      }
+
+      20% {
+        --degree: 72deg;
+      }
+
+      30% {
+        --degree: 108deg;
+      }
+
+      40% {
+        --degree: 144deg;
+      }
+
+      50% {
+        --degree: 180deg;
+      }
+
+      60% {
+        --degree: 216deg;
+      }
+
+      70% {
+        --degree: 252deg;
+      }
+
+      80% {
+        --degree: 288deg;
+      }
+
+      90% {
+        --degree: 324deg;
       }
 
       100% {
-        --rotate: 360deg;
+        --degree: 360deg;
       }
     }
 
     @-webkit-keyframes spin {
       0% {
-        --rotate: 0deg;
+        --degree: 1deg;
+      }
+
+      5% {
+        --degree: 18deg;
+      }
+
+      10% {
+        --degree: 36deg;
+      }
+
+      15% {
+        --degree: 54deg;
+      }
+
+      20% {
+        --degree: 72deg;
+      }
+
+      30% {
+        --degree: 108deg;
+      }
+
+      40% {
+        --degree: 144deg;
+      }
+
+      50% {
+        --degree: 180deg;
+      }
+
+      60% {
+        --degree: 216deg;
+      }
+
+      70% {
+        --degree: 252deg;
+      }
+
+      80% {
+        --degree: 288deg;
+      }
+
+      90% {
+        --degree: 324deg;
       }
 
       100% {
-        --rotate: 360deg;
+        --degree: 360deg;
       }
     }
 
     .card {
       background: black;
-      width: 350px;
+      width: var(--card-width);
       height: 350px;
       color: white;
+      position: relative;
     }
 
     .card::before {
-      content: "";
+      content: " ";
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 104%;
+      height: 104%;
       border-radius: 8px;
       border: 1px solid red;
-      background: linear-gradient(var(--rotate), #ff772e, #00bcd4 43%, #ffdb12);
+      background: linear-gradient(var(--degree), #ff772e, #00bcd4 43%, #ffdb12);
       z-index: -1;
-      top: -10px;
-      left: -20px;
-      animation: spin 2.5s linear infinite;
-
+      top: -2%;
+      left: -2%;
+      animation: spin 0.25s linear infinite;
+      -moz-animation: spin 1.5s linear infinite;
+      -webkit-animation: spin 2.5s linear infinite;
     }
   </style>
 </head>
@@ -61,5 +198,11 @@
 <body>
   <div class="card">Venkat</div>
 </body>
+
+<script>
+  const card = document.getElementsByClassName("card")[0]
+
+  console.log(getComputedStyle(card, ":before").background)
+</script>
 
 </html>
