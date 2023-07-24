@@ -2,24 +2,29 @@ import { client } from "@/app/apollo-client";
 import { gql } from "@apollo/client";
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query {
-        authors {
-          id
-          name
-          books {
+  let data = { authors: [] };
+  try {
+    const response = await client.query({
+      query: gql`
+        query {
+          authors {
             id
             name
+            books {
+              id
+              name
+            }
           }
         }
-      }
-    `,
-  });
+      `,
+    });
+
+    data = response.data;
+  } catch (e) {}
 
   return {
     props: {
-      authors: data.authors,
+      authors: data?.authors,
     },
   };
 }
