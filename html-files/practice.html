@@ -41,6 +41,25 @@
             transform: translateY(-50%);
             font-size: var(--boxAfterFontSize, 20px);
         }
+
+        .center {
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 10px;
+            border: 5px solid;
+            width: 50%;
+            /* text-align: center; */
+        }
+
+        .flex-center {
+            width: 100%;
+            border: 1px red solid;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+        }
     </style>
 </head>
 
@@ -54,6 +73,14 @@
     <div style="border: 1px solid">I am a Block!</div>
     <div style="border: 1px solid; display: inline; margin: 10px">I am Inline!</div>
     <div style="border:1px solid; margin: 10px; display: inline-block">I am Inline-block!</div>
+
+    <div class="center">
+        <p>The text in this div is centered horizontally.</p>
+    </div>
+
+    <div class="flex-center">
+        <p>The text in this div is centered horizontally.</p>
+    </div>
 </body>
 
 <script>
