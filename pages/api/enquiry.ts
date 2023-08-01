@@ -8,7 +8,7 @@ const handler = (req: any, res: any) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `secret=6LcxNl8nAAAAAPD7kXoj5TiQFwS7Yf5bH6l021q4&response=${req.body.gRecaptchaToken}`,
+        body: `secret=&response=${req.body.gRecaptchaToken}`,
       })
         .then((reCaptchaRes) => reCaptchaRes.json())
         .then((reCaptchaRes) => {
