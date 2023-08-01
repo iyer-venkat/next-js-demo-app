@@ -7,7 +7,7 @@ import EnquiryForm from "@/components/Form";
 
 const Recaptcha = () => {
   const url =
-    "https://www.google.com/recaptcha/api/siteverify?secret=6LcC9VknAAAAADYmZFj0q3lOWNLmv1mbV1ozOhBE";
+    "https://www.google.com/recaptcha/api/siteverify?secret=";
   const [reCaptchaProps, verifyCaptcha] = useAxios(
     {
       url,
@@ -32,13 +32,13 @@ const Recaptcha = () => {
   return (
     <>
       <ReCaptcha
-        sitekey="6LcC9VknAAAAALPsF1B54tDgcZWVa0hRrVZKicCT"
+        sitekey=""
         ref={captchaRef}
         onChange={verifyToken}
       />
       <br />
       <GoogleReCaptchaProvider
-        reCaptchaKey="6LcxNl8nAAAAAKbnfk2uyNd4AjtJX8z2LujLUyop"
+        reCaptchaKey=""
         scriptProps={{
           async: false,
           defer: false,
