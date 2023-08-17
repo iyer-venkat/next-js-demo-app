@@ -1,14 +1,14 @@
 import { useCallback, useState } from "react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+// import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import styles from "../styles/Home.module.css";
 
-const EnquiryForm = () => {
+const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [notification, setNotification] = useState("");
 
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  // const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSumitForm = useCallback(
     (e: any) => {
@@ -39,16 +39,18 @@ const EnquiryForm = () => {
           });
       };
 
-      if (!executeRecaptcha) {
-        console.log("Execute recaptcha not yet available");
-        return;
-      }
-      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-        console.log(gReCaptchaToken, "response Google reCaptcha server");
-        submitEnquiryForm(gReCaptchaToken);
-      });
+      verifyToken();
+
+      // if (!executeRecaptcha) {
+      //   console.log("Execute recaptcha not yet available");
+      //   return;
+      // }
+      // executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+      //   console.log(gReCaptchaToken, "response Google reCaptcha server");
+      //   submitEnquiryForm(gReCaptchaToken);
+      // });
     },
-    [executeRecaptcha, name, email, message]
+    [name, email, message]
   );
 
   return (
