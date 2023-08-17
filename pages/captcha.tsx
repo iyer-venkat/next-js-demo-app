@@ -10,7 +10,7 @@ const Recaptcha = () => {
 
   const url =
     // "https://www.google.com/recaptcha/api/siteverify?secret=6LcC9VknAAAAADYmZFj0q3lOWNLmv1mbV1ozOhBE";
-    "https://www.google.com/recaptcha/api/siteverify?s3ecret=6Let67EnAAAAAHiNHpOFg6XEhuaa_N2nb63vnVbm";
+    "https://www.google.com/recaptcha/api/siteverify?secret=6Let67EnAAAAAHiNHpOFg6XEhuaa_N2nb63vnVbm";
   const [reCaptchaProps, verifyCaptcha] = useAxios(
     {
       url,
