@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <>
-          <h1>Hello,World!</h1>
+          {/* <h1>Hello,World!</h1> */}
           {children}
         </>
       </body>

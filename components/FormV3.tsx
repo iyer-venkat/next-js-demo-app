@@ -1,21 +1,21 @@
 import { useCallback, useState } from "react";
-// import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import styles from "../styles/Home.module.css";
 
-const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
+const FormV3 = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [notification, setNotification] = useState("");
 
-  // const { executeRecaptcha } = useGoogleReCaptcha();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSumitForm = useCallback(
     (e: any) => {
       e.preventDefault();
 
       const submitEnquiryForm = (gReCaptchaToken: string) => {
-        fetch("/api/enquiry", {
+        fetch("/api/V3/enquiry", {
           method: "POST",
           headers: {
             Accept: "application/json, text/plain, */*",
@@ -39,18 +39,16 @@ const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
           });
       };
 
-      verifyToken();
-
-      // if (!executeRecaptcha) {
-      //   console.log("Execute recaptcha not yet available");
-      //   return;
-      // }
-      // executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-      //   console.log(gReCaptchaToken, "response Google reCaptcha server");
-      //   submitEnquiryForm(gReCaptchaToken);
-      // });
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
+      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+        console.log(gReCaptchaToken, "response Google reCaptcha server");
+        submitEnquiryForm(gReCaptchaToken);
+      });
     },
-    [name, email, message]
+    [executeRecaptcha, name, email, message]
   );
 
   return (
@@ -66,6 +64,7 @@ const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
             className="form-control mb-3"
             placeholder="Name"
           />
+          <br />
           <input
             type="text"
             name="email"
@@ -74,6 +73,7 @@ const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
             className="form-control mb-3"
             placeholder="Email"
           />
+          <br />
           <textarea
             rows={3}
             // type="text"
@@ -83,6 +83,7 @@ const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
             className="form-control mb-3"
             placeholder="Message"
           />
+          <br />
           <button type="submit" className="btn btn-light">
             Submit
           </button>
@@ -94,4 +95,4 @@ const EnquiryForm = ({ verifyToken }: { verifyToken: any }) => {
   );
 };
 
-export default EnquiryForm;
+export default FormV3;
